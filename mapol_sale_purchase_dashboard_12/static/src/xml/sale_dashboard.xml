@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <t t-name="mapol_sale_purchase_dashboard.sale_dashboard">
+    <t t-name="mapol_sale_purchase_dashboard_12.sale_dashboard">
         <!--View-->
         <div class="all_dash col-lg-12">
             <!-- Sale Dashboard -->

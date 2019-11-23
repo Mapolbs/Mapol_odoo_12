@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="mapol_sale_purchase_dashboard.dashboard">
+    <t t-name="mapol_sale_purchase_dashboard_12.dashboard">
         <!--View-->
         <div class="all_dash col-lg-12">
             <!-- Purchase Dashboard -->

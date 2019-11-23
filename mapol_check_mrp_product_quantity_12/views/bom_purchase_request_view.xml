@@ -11,7 +11,7 @@
                                 states="to_approve,approved,rejected"
                                 string="Reset to Draft"
                                 type="object"
-                                groups="mapol_check_mrp_product_quantity.group_bom_purchase_request_manager"/>
+                                groups="mapol_check_mrp_product_quantity_12.group_bom_purchase_request_manager"/>
                         <button name="button_approve" states="draft"
                                 string="Request for approval" type="object"
                                 class="oe_highlight"/>
@@ -20,20 +20,20 @@
                                 string="Approve"
                                 type="object"
                                 class="oe_highlight"
-                                groups="mapol_check_mrp_product_quantity.group_bom_purchase_request_manager"/>
+                                groups="mapol_check_mrp_product_quantity_12.group_bom_purchase_request_manager"/>
                         <button name="mark_done"
                                 states="approved"
                                 string="Mark as Done"
                                 type="object"
                                 class="oe_highlight"
-                                groups="mapol_check_mrp_product_quantity.group_bom_purchase_request_manager"/>
+                                groups="mapol_check_mrp_product_quantity_12.group_bom_purchase_request_manager"/>
                         <button name="set_to_rejected"
                                 string="Reject"
                                 states="to_approve,approved,rejected"
                                 type="object"/>
 
                         <button string="Create New Quotation" states="done" name="make_purchase_quotation" type="object"
-                            groups="mapol_check_mrp_product_quantity.group_bom_purchase_request_manager"/>
+                            groups="mapol_check_mrp_product_quantity_12.group_bom_purchase_request_manager"/>
 
                         <field name="state" widget="statusbar"
                                statusbar_visible="draft,to_approve,approved,done,rejected"

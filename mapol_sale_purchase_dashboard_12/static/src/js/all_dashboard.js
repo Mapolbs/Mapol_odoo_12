@@ -1,4 +1,4 @@
-odoo.define('mapol_sale_purchase_dashboard.dashboard', function (require) {
+odoo.define('mapol_sale_purchase_dashboard_12.dashboard', function (require) {
 "use strict";
 
 var core = require('web.core');
@@ -30,7 +30,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
         this._super(parent, context);
         var data = [];
         var self = this;
-        if (context.tag == 'mapol_sale_purchase_dashboard.dashboard') {
+        if (context.tag == 'mapol_sale_purchase_dashboard_12.dashboard') {
             self._rpc({
                 model: 'all.dashboard',
                 method: 'get_info',
@@ -52,7 +52,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
     render: function() {
         var super_render = this._super;
         var self = this;
-        var all_dashboard = QWeb.render( 'mapol_sale_purchase_dashboard.dashboard', {
+        var all_dashboard = QWeb.render( 'mapol_sale_purchase_dashboard_12.dashboard', {
             widget: self,
         });
         $( ".o_control_panel" ).addClass( "o_hidden" );
@@ -268,6 +268,6 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
 
 
 });
-core.action_registry.add('mapol_sale_purchase_dashboard.dashboard', DashboardView);
+core.action_registry.add('mapol_sale_purchase_dashboard_12.dashboard', DashboardView);
 return DashboardView
 });

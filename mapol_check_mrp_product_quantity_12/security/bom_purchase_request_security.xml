@@ -16,7 +16,7 @@
 
     <record id="group_bom_purchase_request_manager" model="res.groups">
         <field name="name">BOM Request Manager</field>
-        <field name="implied_ids" eval="[(4, ref('mapol_check_mrp_product_quantity.group_bom_purchase_request_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('mapol_check_mrp_product_quantity_12.group_bom_purchase_request_user'))]"/>
         <field name="category_id" ref="bom_purchase_request_category"/>
     </record>
 

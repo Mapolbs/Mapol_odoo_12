@@ -94,7 +94,7 @@ class BomQuantityCheck(models.Model):
             bom_line_ids = bom.bom_id.bom_line_ids
             if bom.bom_id:
                 if all([bom_lines.calc_product_qty <= bom_lines.product_id.qty_available for bom_lines in bom_line_ids]):
-                    view = self.env.ref('mapol_check_mrp_product_quantity.view_available_quantity')
+                    view = self.env.ref('mapol_check_mrp_product_quantity_12.view_available_quantity')
                     wiz = self.env['available.quantity'].create({'bom_check_id': bom.id})
                     return {
                         'name': _('BOM Quantity status'),
@@ -109,7 +109,7 @@ class BomQuantityCheck(models.Model):
                         'context': self.env.context,
                     }
                 elif any([bom_lines.calc_product_qty <= bom_lines.product_id.qty_available for bom_lines in bom_line_ids]):   
-                    view = self.env.ref('mapol_check_mrp_product_quantity.view_partial_quantity')
+                    view = self.env.ref('mapol_check_mrp_product_quantity_12.view_partial_quantity')
                     wiz = self.env['partial.quantity'].create({'bom_check_id': bom.id})
                     return {
                         'name': _('BOM Quantity status'),
@@ -124,7 +124,7 @@ class BomQuantityCheck(models.Model):
                         'context': self.env.context,
                     }
                 else:
-                    view = self.env.ref('mapol_check_mrp_product_quantity.view_no_quantity')
+                    view = self.env.ref('mapol_check_mrp_product_quantity_12.view_no_quantity')
                     wiz = self.env['no.quantity'].create({'bom_check_id': bom.id})
                     return {
                         'name': _('BOM Quantity status'),
@@ -144,7 +144,7 @@ class BomQuantityCheck(models.Model):
     def create_purchase_request(self):
         self.ensure_one()
         self.write({'state': "in_progress"})
-        view_ref = self.env['ir.model.data'].get_object_reference('mapol_check_mrp_product_quantity', 'view_bom_purchase_request_form')
+        view_ref = self.env['ir.model.data'].get_object_reference('mapol_check_mrp_product_quantity_12', 'view_bom_purchase_request_form')
         view_id = view_ref and view_ref[1] or False,
         return {
             'type': 'ir.actions.act_window',
