@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Default View for Dashboard, which is extended to make Dashboard View -->
+        <record model="ir.ui.view" id="all_dashboard_view">
+            <field name="name">All Dashboard</field>
+            <field name="model">all.dashboard</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <!--<field name="name"/>-->
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Client Action For Menu Dashboard -->
+        <record id="action_all_dashboard" model="ir.actions.client">
+            <field name="name">Purchase Dashboard</field>
+            <field name="tag">mapol_sale_purchase_dashboard.dashboard</field>
+        </record>
+
+        <!-- Menu Dashbaord -->
+        <menuitem id="menu_all_dashboard"
+                  name="Purchase Dashboard"
+                  action="action_all_dashboard"
+                  parent="purchase.menu_purchase_root"
+                  sequence="0"/>
+
+        
+        <template id="assets_backend" name="assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/src/js/all_dashboard.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/src/js/sale_dashboard.js"/>
+                
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/charts/Chart.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/charts/Chart.bundle.min.js"/>
+                <!-- Scripts to export html to pdf -->
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/jsPdf/jspdf.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/jsPdf/jspdf.debug.js"/>
+                
+                <!-- Datatable scripts -->
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/datatables.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/dataTables.buttons.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.flash.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.html5.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.print.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/pdfmake.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/vfs_fonts.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/jszip.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.bootstrap.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.bootstrap4.min.js"/>
+                <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.colVis.min.js"/>
+                
+                <!-- <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+                
+                <!-- Css scripts for dashboard view and table -->
+                <link rel="stylesheet" href="/mapol_sale_purchase_dashboard/static/src/css/dashboard.css"/>
+                <link rel="stylesheet" href="/mapol_sale_purchase_dashboard/static/lib/dataTables/datatables.min.css"/>
+                <link rel="stylesheet" href="/mapol_sale_purchase_dashboard/static/lib/dataTables/buttons.dataTables.min.css"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

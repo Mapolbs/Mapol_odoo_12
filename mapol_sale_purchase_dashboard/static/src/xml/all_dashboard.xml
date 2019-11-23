@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mapol_sale_purchase_dashboard.dashboard">
+        <!--View-->
+        <div class="all_dash col-lg-12">
+            <!-- Purchase Dashboard -->
+            <div>
+                <div class="col-md-4">
+                    <div class="media">
+                     <div class="panel-heading">
+                         <h1 class="panel-title">PURCHASE DASHBOARD</h1>
+                     </div>
+                    </div>
+                </div>
+                
+                <!--Dashboard buttons-->
+                <div class="row row-sm">
+			          <div class="col-sm-6 col-xl-3">
+			            <div class="bg-teal rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block rfq-count">
+			              <div class="pd-25 d-flex align-items-center">
+			              <i class="fa fa-shopping-cart" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"> </i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL REQUESTS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><t t-esc="widget.data.rfq_sum"/></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.rfq_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+			          
+			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+			            <div class="bg-danger rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block month-shipments">
+			              <div class="pd-25 d-flex align-items-center">
+			               <i class="fa fa-calendar" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH SHIPMENTS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.month_shipments_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+			            <div class="bg-primary rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block shipments">
+			              <div class="pd-25 d-flex align-items-center">
+			               <i class="fa fa-truck" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">PENDING SHIPMENTS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.shipments_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
+			            <div class="bg-br-primary rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block purchase-count">
+			              <div class="pd-25 d-flex align-items-center">
+			                <i class="fa fa-credit-card-alt" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"></i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL ORDERS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><t t-esc="widget.data.purchase_sum"/></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.purchase_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+        		</div>
+               </div>
+       	</div>
+                
+           <!--Charts-->
+        <!--label for charts-->
+        <div class="all_dash col-lg-12 margintp">
+			<div class="row">
+			 	<div class="col-lg-6">
+				 	<div class="panel">
+		                 <div class="panel-heading">
+		                     <h1 class="panel-title panelheadingpad">BAR GRAPH</h1>
+		                 </div>
+		                	<div class="panel-body">
+		                        <canvas id="myChart"/>
+		                        <div>
+		                         <button type="button" id="generate_purchase_pdf" style="margin-top:15px;margin-bottom:15px" class="btn btn-success btn-lg"
+		                             data-placement="bottom" title="Download Pdf!">
+		                             <i class="fa fa-file-pdf-o"/> Download
+		                         </button>
+								</div>
+		                    </div>
+		           	</div>
+			    </div>
+		       <div class="col-lg-6">
+				   <div class="panel">
+		               <div class="panel-heading">
+		                   <h1 class="panel-title panelheadingpad">PIE CHART</h1>
+		               </div>
+		               <div class="panel-body">
+		                   <canvas id="pieChart"/>
+		                   <button type="button" style="margin-top:15px;margin-bottom:15px" id="generate_purchase_pie_pdf" class="btn btn-success btn-lg"
+		                       data-placement="bottom" title="Download Pdf!">
+		                       <i class="fa fa-file-pdf-o"/> Download
+		                   </button>
+		               </div>
+		           </div>
+			   </div>
+           </div>
+		</div>   
+    </t>
+</templates>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_all_dashboard_officer,mapol_sale_purchase_dashboard.all_dashboard,mapol_sale_purchase_dashboard.model_all_dashboard,base.group_user,1,1,1,1
+access_sale_dashboard_officer,mapol_sale_purchase_dashboard.sale_dashboard,mapol_sale_purchase_dashboard.model_sale_dashboard,base.group_user,1,1,1,1

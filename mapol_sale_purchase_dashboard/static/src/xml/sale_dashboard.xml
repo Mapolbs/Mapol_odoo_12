@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <t t-name="mapol_sale_purchase_dashboard.sale_dashboard">
+        <!--View-->
+        <div class="all_dash col-lg-12">
+            <!-- Sale Dashboard -->
+            <div>
+                <div class="col-md-4">
+                    <div class="media">
+                     <div class="panel-heading">
+                         <h1 class="panel-title">SALE DASHBOARD</h1>
+                     </div>
+                    </div>
+                </div>
+                
+                <!--Dashboard buttons-->
+                <div class="row row-sm">
+			          <div class="col-sm-6 col-xl-3">
+			            <div class="bg-teal rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block total-sales-count">
+			              <div class="pd-25 d-flex align-items-center">
+			              <i class="fa fa-shopping-cart	" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"> </i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL SALE ORDERS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><t t-esc="widget.sale_data.sale_sum"/></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.total_sales_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
+			            <div class="bg-danger rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block month-quotations">
+			              <div class="pd-25 d-flex align-items-center">
+			                <i class="fa fa-calendar" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH QUOTATIONS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.month_quotations_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+			            <div class="bg-primary rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block to-invoice">
+			              <div class="pd-25 d-flex align-items-center">
+			               <i class="fa fa-file-text-o" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TO BE INVOICED</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.to_invoice"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+			            <div class="bg-br-primary rounded overflow-hidden">
+							<a href="javascript:;" class="dashboard-block total-quotations-count">
+			              <div class="pd-25 d-flex align-items-center">
+			               <i class="fa fa-shopping-basket" aria-hidden="true" style="display:inline-block !important; font-size:65px !important;color:white;"></i>
+			                <div class="mg-l-20">
+			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL QUOTATIONS</p>
+			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><t t-esc="widget.sale_data.quotations_sum"/></p>
+			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.total_quotations_count"/></span>
+			                </div>
+			              </div>
+			              </a>
+			            </div>
+			          </div><!-- col-3 -->
+        		</div>
+                </div>
+                </div>
+                
+                
+                <!--Charts-->
+	            <!--label for charts-->
+	            <div class="all_dash col-lg-12 margintp">
+					<div class="row">
+					 	<div class="col-lg-6">
+	                          <div class="panel">
+	                              <div class="panel-heading">
+	                                  <h1 class="panel-title panelheadingpad">BAR GRAPH(This Year)</h1>
+	                              </div>
+	                              <div class="panel-body">
+	                                    <canvas id="myChart"/>
+	                                    <div>
+											<button type="button" style="margin-top:15px;margin-bottom:15px" id="generate_sale_pdf" 
+											class="btn btn-success btn-lg" data-placement="bottom" title="Download Pdf!">
+											<i class="fa fa-file-pdf-o"/> Download</button>
+	                                    </div>
+	                              </div>
+	                          </div>
+	                      </div>
+	                  <!-- Pie Chart -->
+		              <div class="col-lg-6">
+			   				<div class="panel">
+	                            <div class="panel-heading">
+	                                <h1 class="panel-title panelheadingpad">PIE CHART(This Year)</h1>
+	                            </div>
+	                            <div class="panel-body">
+	                                <canvas id="salepieChart" />
+	                                <button type="button" style="margin-top:15px;margin-bottom:15px" 
+	                                id="generate_sale_pie_pdf" class="btn btn-success btn-lg" ata-placement="bottom" title="Download Pdf!">
+	                                <i class="fa fa-file-pdf-o"/> Download</button>
+	                            </div>
+	           				</div>
+			   		</div>
+           		</div>
+			</div>   
+    </t>
+</templates>
