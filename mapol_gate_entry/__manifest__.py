@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name": "Mapol Gate Entry",
+    "name": "Gate Entry",
     'version': '12.0',
     "author" : "Mapol Business Solutions Pvt Ltd",
     "website": "http://mapolbs-opensource.com",
