@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inward_entry_manager,inward.entry,model_inward_entry,sales_team.group_sale_manager,1,1,1,1
+access_inward_entry_salesman,inward.entry,model_inward_entry,sales_team.group_sale_salesman,1,1,1,0
+access_purchase_inward_entry_manager,purchase.inward.entry,model_purchase_inward_entry,sales_team.group_sale_manager,1,1,1,1
+access_purchase_inward_entry_salesman,purchase.inward.entry,model_purchase_inward_entry,sales_team.group_sale_salesman,1,1,1,0
+access_sale_return_inward_manager,sale.return.inward,model_sale_return_inward,sales_team.group_sale_manager,1,1,1,1
+access_sale_return_inward_salesman,sale.return.inward,model_sale_return_inward,sales_team.group_sale_salesman,1,1,1,0
+access_outward_entry_manager,outward.entry,model_outward_entry,sales_team.group_sale_manager,1,1,1,1
+access_outward_entry_salesman,outward.entry,model_outward_entry,sales_team.group_sale_salesman,1,1,1,0
+access_purchase_outward_entry_manager,purchase.outward.entry,model_purchase_outward_entry,sales_team.group_sale_manager,1,1,1,1
+access_purchase_outward_entry_salesman,purchase.outward.entry,model_purchase_outward_entry,sales_team.group_sale_salesman,1,1,1,0
+access_sale_inward_entry_manager,sale.outward.entry,model_sale_outward_entry,sales_team.group_sale_manager,1,1,1,1
+access_sale_outward_entry_salesman,sale.outward.entry,model_sale_outward_entry,sales_team.group_sale_salesman,1,1,1,0

@@ -1,0 +1,60 @@
+<odoo>
+	<!-- Purchase View -->
+	<record id="purchase_order_form_inherit_mapol_gate_entry"
+		model="ir.ui.view">
+		<field name="name">purchase.order.form</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//sheet/div/button[@name='action_view_invoice']" position="before">
+                        <button type="object" name="action_view_inward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('inward_entry_id','=',False)]}">
+                            <field name="inward_entry_id" invisible="1"/>
+                            <field name="inward_entry_count" widget="statinfo" string="Inward Entry"/>
+                        </button>
+                        <button type="object" name="action_view_outward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('outward_entry_id','=',False)]}">
+                            <field name="outward_entry_id" invisible="1"/>
+                            <field name="outward_entry_count" widget="statinfo" string="Outward Entry"/>
+                        </button>
+			</xpath>
+		</field>
+	</record>
+	
+	<!-- Sale View -->
+	<record id="view_order_form_inherit_mapol_gate_entry"
+		model="ir.ui.view">
+		<field name="name">sale.order.form</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//sheet/div/button[@name='action_view_invoice']" position="before">
+	            <button type="object" name="action_view_inward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('inward_entry_id','=',False)]}">
+	                <field name="inward_entry_id" invisible="1"/>
+	                <field name="inward_entry_count" widget="statinfo" string="Inward Entry"/>
+	            </button>
+	            <button type="object" name="action_view_outward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('outward_entry_id','=',False)]}">
+	                <field name="outward_entry_id" invisible="1"/>
+	                <field name="outward_entry_count" widget="statinfo" string="Outward Entry"/>
+	            </button>
+			</xpath>
+		</field>
+	</record>
+	
+	
+	
+	<!-- Stock View -->
+	<!-- <record id="view_picking_form_inherit_mapol_gate_entry"
+		model="ir.ui.view">
+		<field name="name">stock.picking.form</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='button_validate']" position="attributes">
+            	<attribute name="attrs">{'invisible':[('gate_entry_check','=',False)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='origin']" position="after">
+            	<field name="gate_entry_check"/>
+			</xpath>
+		</field>
+	</record> -->
+	
+</odoo>
