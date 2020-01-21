@@ -107,10 +107,10 @@ class Sale(models.Model):
         
 
 
-# class StockPicking(models.Model):
-#     _inherit = 'stock.picking'
-#     
-#     gate_entry_check = fields.Boolean('Gate Entry Check',default=False)
+class StockPicking(models.Model):
+    _inherit = 'stock.picking'
+     
+    gate_entry_check = fields.Boolean('Gate Entry Check',default=False)
 
 
  

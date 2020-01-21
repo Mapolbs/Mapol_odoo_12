@@ -42,7 +42,7 @@
 	
 	
 	<!-- Stock View -->
-	<!-- <record id="view_picking_form_inherit_mapol_gate_entry"
+	<record id="view_picking_form_inherit_mapol_gate_entry"
 		model="ir.ui.view">
 		<field name="name">stock.picking.form</field>
 		<field name="model">stock.picking</field>
@@ -52,9 +52,9 @@
             	<attribute name="attrs">{'invisible':[('gate_entry_check','=',False)]}</attribute>
 			</xpath>
 			<xpath expr="//field[@name='origin']" position="after">
-            	<field name="gate_entry_check"/>
+            	<field name="gate_entry_check" invisible='1'/>
 			</xpath>
 		</field>
-	</record> -->
+	</record>
 	
 </odoo>

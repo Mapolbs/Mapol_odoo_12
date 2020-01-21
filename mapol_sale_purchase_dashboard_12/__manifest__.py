@@ -15,6 +15,8 @@
         "stock"
 
     ],
+    'currency': 'EUR',
+    'price': 24.0,
     "license": "LGPL-3",
     "data": [
         'security/ir.model.access.csv',
