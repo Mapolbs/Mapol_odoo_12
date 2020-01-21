@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="mapol_sale_purchase_dashboard_12.dashboard">
+    <t t-name="mapol_sale_purchase_dashboard.dashboard">
         <!--View-->
         <div class="all_dash col-lg-12">
             <!-- Purchase Dashboard -->
@@ -16,7 +16,7 @@
                 <!--Dashboard buttons-->
                 <div class="row row-sm">
 			          <div class="col-sm-6 col-xl-3">
-			            <div class="bg-teal rounded overflow-hidden">
+			            <div class="bg-dash bg-teal rounded overflow-hidden">
 							<a href="javascript:;" class="dashboard-block rfq-count">
 			              <div class="pd-25 d-flex align-items-center">
 			              <i class="fa fa-shopping-cart" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"> </i>
@@ -31,7 +31,7 @@
 			          </div><!-- col-3 -->
 			          
 			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-			            <div class="bg-danger rounded overflow-hidden">
+			            <div class="bg-dash bg-danger rounded overflow-hidden">
 							<a href="javascript:;" class="dashboard-block month-shipments">
 			              <div class="pd-25 d-flex align-items-center">
 			               <i class="fa fa-calendar" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
@@ -45,7 +45,7 @@
 			            </div>
 			          </div><!-- col-3 -->
 			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-			            <div class="bg-primary rounded overflow-hidden">
+			            <div class="bg-dash bg-primary rounded overflow-hidden">
 							<a href="javascript:;" class="dashboard-block shipments">
 			              <div class="pd-25 d-flex align-items-center">
 			               <i class="fa fa-truck" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
@@ -59,7 +59,7 @@
 			            </div>
 			          </div><!-- col-3 -->
 			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
-			            <div class="bg-br-primary rounded overflow-hidden">
+			            <div class="bg-dash bg-br-primary rounded overflow-hidden">
 							<a href="javascript:;" class="dashboard-block purchase-count">
 			              <div class="pd-25 d-flex align-items-center">
 			                <i class="fa fa-credit-card-alt" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"></i>
@@ -83,30 +83,29 @@
 			 	<div class="col-lg-6">
 				 	<div class="panel">
 		                 <div class="panel-heading">
-		                     <h1 class="panel-title panelheadingpad">BAR GRAPH</h1>
+		                     <h1 class="panel-title panelheadingpad">BAR GRAPH
+		                     	<button type="button" id="generate_sale_pdf" 
+											class="btn btn-success btn-lg" data-placement="bottom" title="Download Pdf!">
+											<i class="fa fa-file-pdf-o"/> Download</button>
+		                     </h1>
 		                 </div>
 		                	<div class="panel-body">
-		                        <canvas id="myChart"/>
-		                        <div>
-		                         <button type="button" id="generate_purchase_pdf" style="margin-top:15px;margin-bottom:15px" class="btn btn-success btn-lg"
-		                             data-placement="bottom" title="Download Pdf!">
-		                             <i class="fa fa-file-pdf-o"/> Download
-		                         </button>
-								</div>
+		                        <canvas id="myChart" style="width:800px;height:400px;"/>
 		                    </div>
 		           	</div>
 			    </div>
 		       <div class="col-lg-6">
 				   <div class="panel">
 		               <div class="panel-heading">
-		                   <h1 class="panel-title panelheadingpad">PIE CHART</h1>
-		               </div>
-		               <div class="panel-body">
-		                   <canvas id="pieChart"/>
-		                   <button type="button" style="margin-top:15px;margin-bottom:15px" id="generate_purchase_pie_pdf" class="btn btn-success btn-lg"
+		                   <h1 class="panel-title panelheadingpad">PIE CHART
+		                   	<button type="button" id="generate_purchase_pie_pdf" class="btn btn-success btn-lg"
 		                       data-placement="bottom" title="Download Pdf!">
 		                       <i class="fa fa-file-pdf-o"/> Download
 		                   </button>
+		                   </h1>
+		               </div>
+		               <div class="panel-body">
+		                   <canvas id="piechart_3d"/>
 		               </div>
 		           </div>
 			   </div>

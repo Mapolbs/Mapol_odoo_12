@@ -1,4 +1,4 @@
-odoo.define('mapol_sale_purchase_dashboard_12.dashboard', function (require) {
+odoo.define('mapol_sale_purchase_dashboard.dashboard', function (require) {
 "use strict";
 
 var core = require('web.core');
@@ -30,7 +30,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
         this._super(parent, context);
         var data = [];
         var self = this;
-        if (context.tag == 'mapol_sale_purchase_dashboard_12.dashboard') {
+        if (context.tag == 'mapol_sale_purchase_dashboard.dashboard') {
             self._rpc({
                 model: 'all.dashboard',
                 method: 'get_info',
@@ -52,7 +52,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
     render: function() {
         var super_render = this._super;
         var self = this;
-        var all_dashboard = QWeb.render( 'mapol_sale_purchase_dashboard_12.dashboard', {
+        var all_dashboard = QWeb.render( 'mapol_sale_purchase_dashboard.dashboard', {
             widget: self,
         });
         $( ".o_control_panel" ).addClass( "o_hidden" );
@@ -176,10 +176,10 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
             bg_color_list.push(self.getRandomColor())
         }
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                  labels: ["January","February", "March", "April", "May", "June", "July", "August", "September",
-                 "October", "November", "December"],
+                "October", "November", "December"],
                  labels: self.data.purchase_label,
                 datasets: [{
                     label: 'Purchase Graph',
@@ -229,13 +229,15 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
         });
         
         //Pie Chart
-        var piectx = this.$el.find('#pieChart');
+        var piectx = document.getElementById("piechart_3d").getContext('2d');
         bg_color_list = []
         for (var i=0;i<=self.data.purchase_dataset.length;i++){
             bg_color_list.push(self.getRandomColor())
         }
+        
+        console.log(self.data.purchase_label);
         var pieChart = new Chart(piectx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 datasets: [{
                     data: self.data.purchase_dataset,
@@ -245,18 +247,20 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
                 labels:self.data.purchase_label,
             },
             options: {
-                responsive: true
+                responsive: true,
+                
             }
         });
         
+        },
+        
 
-    },
     generate_purchase_pdf: function(chart) {
         if (chart == 'bar'){
             var canvas = document.querySelector('#myChart');
         }
         else if (chart == 'pie') {
-            var canvas = document.querySelector('#pieChart');
+            var canvas = document.querySelector('#piechart_3d');
         }
         //creates image
         var canvasImg = canvas.toDataURL("image/jpeg", 1.0);
@@ -268,6 +272,6 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
 
 
 });
-core.action_registry.add('mapol_sale_purchase_dashboard_12.dashboard', DashboardView);
+core.action_registry.add('mapol_sale_purchase_dashboard.dashboard', DashboardView);
 return DashboardView
 });

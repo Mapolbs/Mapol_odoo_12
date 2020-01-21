@@ -12,13 +12,17 @@
   margin: 4px 2px;
   cursor: pointer;
 }
-
+.panel-title{
+	color:black !important;
+	background-color: transparent !important;
+	border-bottom: none !important;
+}
 canvas
 {
     background-color: #ffffff;
 }
 .all_dash {
-    background-color: lavenderblush;
+    background-color: white;
 }
 .purchase_heading {
     color: red;
@@ -158,4 +162,8 @@ margin-top:40px
 }
 .panelheadingpad{
 padding:14px;
+}
+.bg-dash:hover{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+transform: scale(1.1); 
 }

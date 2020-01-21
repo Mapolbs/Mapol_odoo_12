@@ -53,7 +53,7 @@ class SaleDashboard(models.Model):
                 date_trunc('month', s.confirmation_date)::date AS month_date
                 from sale_order s
                 WHERE state = 'sale' AND date_part('year', s.confirmation_date) = date_part('year', CURRENT_DATE)
-                group by date_trunc('month', s.confirmation_date)::date
+                group by month_date
         """
 #         query = """
 #                 select sum(s.amount_total) as amount,
@@ -69,7 +69,8 @@ class SaleDashboard(models.Model):
         sale_dataset = []
         for data in sale_data:
 #             sale_label.append(data['date'])
-            sale_label.append(data['month_date'])
+#             date_new = datetime.strptime(data['month_date'], "%d %b %Y")
+            sale_label.append(str(data['month_date'].month) + '-' + str(data['month_date'].year))
             sale_dataset.append(data['amount'])
         
         if sale_id:

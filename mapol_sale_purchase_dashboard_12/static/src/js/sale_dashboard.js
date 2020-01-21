@@ -1,4 +1,4 @@
-odoo.define('mapol_sale_purchase_dashboard_12.sale_dashboard', function (require) {
+odoo.define('mapol_sale_purchase_dashboard.sale_dashboard', function (require) {
 "use strict";
 
 var core = require('web.core');
@@ -30,7 +30,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
         this._super(parent, context);
         var sale_data = [];
         var self = this;
-        if (context.tag == 'mapol_sale_purchase_dashboard_12.sale_dashboard') {
+        if (context.tag == 'mapol_sale_purchase_dashboard.sale_dashboard') {
             //Sale rpc
             self._rpc({
                 model: 'sale.dashboard',
@@ -53,7 +53,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
     render: function() {
         var super_render = this._super;
         var self = this;
-        var sale_dashboard = QWeb.render( 'mapol_sale_purchase_dashboard_12.sale_dashboard', {
+        var sale_dashboard = QWeb.render( 'mapol_sale_purchase_dashboard.sale_dashboard', {
             widget: self,
         });
         $( ".o_control_panel" ).addClass( "o_hidden" );
@@ -235,7 +235,7 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
             bg_color_list.push(self.getRandomColor())
         }
         var pieChart = new Chart(piectx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 datasets: [{
                     data: self.sale_data.sale_dataset,
@@ -301,6 +301,6 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
 
 
 });
-core.action_registry.add('mapol_sale_purchase_dashboard_12.sale_dashboard', DashboardView);
+core.action_registry.add('mapol_sale_purchase_dashboard.sale_dashboard', DashboardView);
 return DashboardView
 });

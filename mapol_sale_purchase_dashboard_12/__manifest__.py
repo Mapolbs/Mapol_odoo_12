@@ -25,8 +25,6 @@
         "static/src/xml/all_dashboard.xml",
         "static/src/xml/sale_dashboard.xml"
     ],
-    'price': 24.00,
-    'currency': 'EUR',
     'installable': True,
     'auto_install': False,
     'application': True,
