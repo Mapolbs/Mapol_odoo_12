@@ -34,16 +34,16 @@ class InwardEntry(models.Model):
                 for line in self.purchase_outward_ids.purchase_id:
                     line.outward_entry_id = self.id
                     line.outward_entry_count = line.outward_entry_count + 1
-                    if line.picking_ids:
-                        for picking in line.picking_ids:
-                            picking.gate_entry_check = True
+#                     if line.picking_ids:
+#                         for picking in line.picking_ids:
+#                             picking.gate_entry_check = True
             if self.sale_outward_ids:
                 for line in self.sale_outward_ids.sale_id:
                     line.outward_entry_id = self.id
                     line.outward_entry_count = line.outward_entry_count + 1
-                    if line.picking_ids:
-                        for picking in line.picking_ids:
-                            picking.gate_entry_check = True
+#                     if line.picking_ids:
+#                         for picking in line.picking_ids:
+#                             picking.gate_entry_check = True
 
 
 class PurchaseInward(models.Model):
