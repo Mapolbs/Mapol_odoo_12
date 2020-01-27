@@ -2,82 +2,210 @@
 <templates xml:space="preserve">
     <t t-name="mapol_sale_purchase_dashboard.dashboard">
         <!--View-->
-        <div class="all_dash col-lg-12">
-            <!-- Purchase Dashboard -->
+        
+        <div class="all_dash-purchase col-lg-12">
+            <!-- Sale Dashboard -->
             <div>
-                <div class="col-md-4">
-                    <div class="media">
+                <div class="dash-heading-purchase">
                      <div class="panel-heading">
-                         <h1 class="panel-title">PURCHASE DASHBOARD</h1>
+                         <h1 class="panel-title-purchase">PURCHASE DASHBOARD</h1>
                      </div>
-                    </div>
                 </div>
                 
                 <!--Dashboard buttons-->
                 <div class="row row-sm">
-			          <div class="col-sm-6 col-xl-3">
-			            <div class="bg-dash bg-teal rounded overflow-hidden">
-							<a href="javascript:;" class="dashboard-block rfq-count">
-			              <div class="pd-25 d-flex align-items-center">
-			              <i class="fa fa-shopping-cart" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"> </i>
-			                <div class="mg-l-20">
-			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL REQUESTS</p>
-			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><t t-esc="widget.data.rfq_sum"/></p>
-			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.rfq_count"/></span>
-			                </div>
-			              </div>
-			              </a>
+                	<div class="column-dash">
+                		<div class="bg-dash dash-sale">
+                			<a href="javascript:;" class="dashboard-block rfq-count">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL REQUESTS</p>
+					                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.data.rfq_sum"/></p>
+					                <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.rfq_count"/></span>
+					            </div>
+				            </a>
 			            </div>
-			          </div><!-- col-3 -->
-			          
-			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-			            <div class="bg-dash bg-danger rounded overflow-hidden">
-							<a href="javascript:;" class="dashboard-block month-shipments">
-			              <div class="pd-25 d-flex align-items-center">
-			               <i class="fa fa-calendar" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
-			                <div class="mg-l-20">
-			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH SHIPMENTS</p>
-			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"></p>
-			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.month_shipments_count"/></span>
-			                </div>
-			              </div>
-			              </a>
+			            <div class="bg-dash dash-quot">
+                			<a href="javascript:;" class="dashboard-block month-shipments">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH SHIPMENTS</p>
+			                 		<p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.data.month_shipments_total"/></p>
+			                  		<span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.month_shipments_count"/></span>
+					            </div>
+				            </a>
 			            </div>
-			          </div><!-- col-3 -->
-			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-			            <div class="bg-dash bg-primary rounded overflow-hidden">
-							<a href="javascript:;" class="dashboard-block shipments">
-			              <div class="pd-25 d-flex align-items-center">
-			               <i class="fa fa-truck" aria-hidden="true" style="display:inline-block !important; font-size:75px !important;color:white;"></i>
-			                <div class="mg-l-20">
-			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">PENDING SHIPMENTS</p>
-			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"></p>
-			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.shipments_count"/></span>
-			                </div>
-			              </div>
-			              </a>
+			            <div class="bg-dash dash-inv">
+                			<a href="javascript:;" class="dashboard-block shipments">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">PENDING SHIPMENTS</p>
+				                    <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.data.shipment_total"/></p>
+				                    <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.shipments_count"/></span>
+					            </div>
+				            </a>
 			            </div>
-			          </div><!-- col-3 -->
-			          <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
-			            <div class="bg-dash bg-br-primary rounded overflow-hidden">
-							<a href="javascript:;" class="dashboard-block purchase-count">
-			              <div class="pd-25 d-flex align-items-center">
-			                <i class="fa fa-credit-card-alt" aria-hidden="true" style="display:inline-block !important; font-size:72px !important;color:white;"></i>
-			                <div class="mg-l-20">
-			                  <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL ORDERS</p>
-			                  <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><t t-esc="widget.data.purchase_sum"/></p>
-			                  <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.purchase_count"/></span>
-			                </div>
-			              </div>
-			              </a>
+			            <div class="bg-dash dash-tot">
+                			<a href="javascript:;" class="dashboard-block purchase-count">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL ORDERS</p>
+					                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.data.purchase_sum"/></p>
+					                <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.purchase_count"/></span>
+					            </div>
+				            </a>
 			            </div>
-			          </div><!-- col-3 -->
         		</div>
-               </div>
-       	</div>
-                
-           <!--Charts-->
-        <!--label for charts-->
+           	<!-- charts -->
+           		<div class="column-chart">
+                	<div class="bg-chart-purchase chart-bar" style="background-color:white">
+                		<div class="panel-heading">
+                            <h3 class="panel-title-purchase panelheadingpad">BAR GRAPH
+                            <button type="button" id="generate_purchase_pdf"  style="float:right"
+							class="btn btn-success btn-lg" data-placement="bottom" title="Download Pdf!">
+							<i class="fa fa-file-pdf-o"/> Download</button>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                              <canvas id="myChart"/>
+                        </div>
+                	</div>
+                	<div class="row-card">
+	                	<div class="card-purchase">
+	                		<a href="javascript:;" class="dashboard-block bill_today">
+		                		<div class="card-head">
+		                			<h4>Today Bills</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner-purchase">
+		                					<div><span>Bill Count:</span></div>
+		                					<div><span>Bill Total:</span></div>
+		                					<div><span>Bill Paid Count:</span></div>
+		                					<div><span>Bill Paid Total:</span></div>
+		                					<div><span>Bill Pending Count:</span></div>
+		                					<div><span>Bill Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val-purchase">
+		                					<div><span><t t-esc="widget.data.bill_today_due"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_today_total"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_today_due_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_today_due_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_today_due_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_today_due_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</a>
+	                	</div>
+	                	<div class="card-purchase">
+	               			<a href="javascript:;" class="dashboard-block bill_1_month">
+		                		<div class="card-head">
+		                			<h4>Bills For 1month</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner-purchase">
+		                					<div><span>Bill Count:</span></div>
+		                					<div><span>Bill Total:</span></div>
+		                					<div><span>Bill Paid Count:</span></div>
+		                					<div><span>Bill Paid Total:</span></div>
+		                					<div><span>Bill Pending Count:</span></div>
+		                					<div><span>Bill Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val-purchase">
+		                					<div><span><t t-esc="widget.data.bill_due_30"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_30_final"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_30_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_30_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_30_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_30_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+	                		</a>
+	                	</div>
+                	</div>
+                </div>
+           		<div class="column-chart">
+                	<div class="bg-chart-purchase chart-pie" style="background-color:white">
+                		<div class="panel-heading">
+                            <h3 class="panel-title-purchase panelheadingpad">PIE CHART
+                        	<button type="button" style="float:right" 
+                            id="generate_purchase_pie_pdf" class="btn btn-success btn-lg" ata-placement="bottom" title="Download Pdf!">
+                            <i class="fa fa-file-pdf-o"/> Download</button>
+                           </h3>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="piechart_3d" />
+                        </div>
+                	</div>
+                	<div class="row-card">
+                		<a href="javascript:;" class="dashboard-block bill_3_month">
+		                	<div class="card-purchase">
+		                		<div class="card-head">
+		                			<h4>Bills For 3months</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner-purchase">
+		                					<div><span>Bill Count:</span></div>
+		                					<div><span>Bill Total:</span></div>
+		                					<div><span>Bill Paid Count:</span></div>
+		                					<div><span>Bill Paid Total:</span></div>
+		                					<div><span>Bill Pending Count:</span></div>
+		                					<div><span>Bill Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val-purchase">
+		                					<div><span><t t-esc="widget.data.bill_due_90"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_90_final"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_90_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_90_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_90_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_90_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+		                <a href="javascript:;" class="dashboard-block bill_6_month">
+		                	<div class="card-purchase">
+		                		<div class="card-head">
+		                			<h4>Bills For 6months</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner-purchase">
+		                					<div><span>Bill Count:</span></div>
+		                					<div><span>Bill Total:</span></div>
+		                					<div><span>Bill Paid Count:</span></div>
+		                					<div><span>Bill Paid Total:</span></div>
+		                					<div><span>Bill Pending Count:</span></div>
+		                					<div><span>Bill Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val-purchase">
+		                					<div><span><t t-esc="widget.data.bill_due_180"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_180_final"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_180_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_180_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+                	</div>
+                </div>
+           	
+           	
+            </div>
+           	
+           	
+        </div>
+     </div>
+        
+        
+        
+        
+<!--     Charts
+        label for charts
         <div class="all_dash col-lg-12 margintp">
 			<div class="row">
 			 	<div class="col-lg-6">
@@ -110,6 +238,6 @@
 		           </div>
 			   </div>
            </div>
-		</div>   
+		</div>    -->
     </t>
 </templates>

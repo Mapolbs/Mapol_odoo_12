@@ -22,6 +22,10 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
     	'click .total-quotations-count': 'action_total_quotations_count',
     	'click .month-quotations': 'action_month_quotations',
     	'click .to-invoice': 'action_to_invoice',
+    	'click .due_1_month': 'action_due_1_month',
+    	'click .due_3_month': 'action_due_3_month',
+    	'click .due_6_month': 'action_due_6_month',
+    	'click .due_today': 'action_due_today',
     	//pdf
     	'click #generate_sale_pdf': function(){this.generate_sale_pdf("bar");},
     	'click #generate_sale_pie_pdf': function(){this.generate_sale_pdf("pie")},
@@ -126,6 +130,106 @@ var DashboardView = AbstractAction.extend(ControlPanelMixin, {
             		 ['date_order','<', lday]
             		 ],
             search_view_id: self.sale_data.sale_search_view_id,
+            target: 'current'
+        },{on_reverse_breadcrumb: function(){ return self.reload();}})
+    },
+    
+    action_due_1_month: function(event) {
+    	var self = this;
+        var date = new Date();
+        var lastDay = new Date(date.getFullYear(), date.getMonth() - 1, 0);
+        var fday = date.toJSON().slice(0,10).replace(/-/g,'-');
+        var lday = lastDay.toJSON().slice(0,10).replace(/-/g,'-');
+        event.stopPropagation();
+        event.preventDefault();
+        return self.do_action({
+            name: _t("Due for Last 1month"),
+            type: 'ir.actions.act_window',
+            res_model: 'account.invoice',
+            src_model: 'account.invoice',
+            view_mode: 'tree,form',
+            view_type: 'form',
+            views: [[false, 'list'],[false, 'form']],
+            domain: [['state','in',['draft','open','paid']],
+            		 ['date_due','<=', fday],
+            		 ['date_due','>=', lday],
+            		 ['type','=','out_invoice']
+            		 ],
+            search_view_id: self.sale_data.invoice_search_id,
+            target: 'current'
+        },{on_reverse_breadcrumb: function(){ return self.reload();}})
+    },
+    
+    action_due_3_month: function(event) {
+    	var self = this;
+        var date = new Date();
+        var lastDay = new Date(date.getFullYear(), date.getMonth() - 3, 0);
+        var fday = date.toJSON().slice(0,10).replace(/-/g,'-');
+        var lday = lastDay.toJSON().slice(0,10).replace(/-/g,'-');
+        event.stopPropagation();
+        event.preventDefault();
+        return self.do_action({
+            name: _t("Due For Last 3 Months"),
+            type: 'ir.actions.act_window',
+            res_model: 'account.invoice',
+            src_model: 'account.invoice',
+            view_mode: 'tree,form',
+            view_type: 'form',
+            views: [[false, 'list'],[false, 'form']],
+            domain: [['state','in',['draft','open','paid']],
+            		 ['date_due','<=', fday],
+            		 ['date_due','>=', lday],
+            		 ['type','=','out_invoice']
+            		 ],
+            search_view_id: self.sale_data.invoice_search_id,
+            target: 'current'
+        },{on_reverse_breadcrumb: function(){ return self.reload();}})
+    },
+    
+    action_due_6_month: function(event) {
+    	var self = this;
+        var date = new Date();
+        var lastDay = new Date(date.getFullYear(),date.getMonth() - 6, 0);
+        var fday = date.toJSON().slice(0,10).replace(/-/g,'-');
+        var lday = lastDay.toJSON().slice(0,10).replace(/-/g,'-');
+        event.stopPropagation();
+        event.preventDefault();
+        return self.do_action({
+            name: _t("Due For Last 6 Months"),
+            type: 'ir.actions.act_window',
+            res_model: 'account.invoice',
+            src_model: 'account.invoice',
+            view_mode: 'tree,form',
+            view_type: 'form',
+            views: [[false, 'list'],[false, 'form']],
+            domain: [['state','in',['draft','open','paid']],
+            		 ['date_due','<=', fday],
+            		 ['date_due','>=', lday],
+            		 ['type','=','out_invoice']
+            		 ],
+            search_view_id: self.sale_data.invoice_search_id,
+            target: 'current'
+        },{on_reverse_breadcrumb: function(){ return self.reload();}})
+    },
+    
+    action_due_today: function(event) {
+    	var self = this;
+        var date = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+        event.stopPropagation();
+        event.preventDefault();
+        return self.do_action({
+            name: _t("Today Due"),
+            type: 'ir.actions.act_window',
+            res_model: 'account.invoice',
+            src_model: 'account.invoice',
+            view_mode: 'tree,form',
+            view_type: 'form',
+            views: [[false, 'list'],[false, 'form']],
+            domain: [['state','in',['draft','open','paid']],
+            		 ['date_due','=', date],
+            		 ['type','=','out_invoice']
+            		 ],
+            search_view_id: self.sale_data.invoice_search_id,
             target: 'current'
         },{on_reverse_breadcrumb: function(){ return self.reload();}})
     },

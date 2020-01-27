@@ -28,10 +28,11 @@
         
         <template id="assets_backend" name="assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
+            	<script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/js/sale_dashboard.js"/>
+	            <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/js/google_loader.js"></script>
                 <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/src/js/all_dashboard.js"/>
-				<script src="https://code.highcharts.com/highcharts-3d.js"></script>
                 <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/src/js/sale_dashboard.js"/>
-                
+ 				<script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/src/js/invoice_dashboard.js"/>               
                 <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/charts/Chart.min.js"/>
                 <script type="text/javascript" src="/mapol_sale_purchase_dashboard/static/lib/charts/Chart.bundle.min.js"/>
                 <!-- Scripts to export html to pdf -->

@@ -22,7 +22,7 @@ canvas
     background-color: #ffffff;
 }
 .all_dash {
-    background-color: white;
+    background-color: #eceaea9c;
 }
 .purchase_heading {
     color: red;
@@ -163,7 +163,156 @@ margin-top:40px
 .panelheadingpad{
 padding:14px;
 }
+
+.bg-dash{
+transition: transform .3s;
+}
 .bg-dash:hover{
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 transform: scale(1.1); 
+}
+.bg-dash_inv{
+margin-left: 20px;
+margin-top:20px
+}
+.bg-dash_new{
+margin-left: 20px;
+margin-top:20px;
+height:200px;
+max-width:270px;
+}
+.heading{
+color:white;
+font-size:
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.column-dash {
+  float: left;
+  width: 20%;
+}
+.inner-dash{
+  padding:10px;
+ }
+.bg-dash{
+ padding:10px;
+ margin-top:12px;
+ border-radius: 6px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.column-chart{
+ float: left;
+  width: 40%;
+  padding: 10px;
+ }
+ .dash-heading{
+ 	padding: 5px;
+    text-align: center;
+    background-color: white;
+ }
+ .bg-chart{
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ transition: transform .5s;
+ }
+ .bg-chart:hover{
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+transform: scale(1.05); 
+ }
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+    float: left;
+    width: 47%;
+    margin: 0px 6px 0px 6px;
+    margin-top: 15px;
+    height: 198px;
+    transition: transform .4s;
+}
+.card:hover{
+transform: scale(1.05); 
+}
+.card-head{
+    background-color: #f8628c;
+    padding: 3px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 13px 0 rgba(0, 0, 0, 0.19);
+}
+
+.col-inner{
+float: left;
+  width: 70%;
+  color:#6a6969;
+}
+.col-inner-val{
+float: right;
+  width: 30%;
+  color:#6a6969;
+}
+.dash-sale{
+background: linear-gradient(230deg, #759bff, #843cf6);
+}
+.dash-quot{
+background: linear-gradient(316deg, #fc5286, #fbaaa2);
+}
+.dash-inv{
+    background: linear-gradient(135deg, #ffc480, #ff763b);
+}
+.dash-tot{
+    background: linear-gradient(to bottom, #299a92, #2c94de);
+}
+.all_dash-purchase {
+    background-color: #4c4b4b;
+    padding-bottom:52px;
+}
+.dash-heading-purchase{
+ 	padding: 5px;
+    text-align: center;
+    background-color: #6b6a6af2;
+ }
+ .panel-title-purchase{
+	color:white !important;
+	background-color: transparent !important;
+	border-bottom: none !important;
+}
+.bg-chart-purchase{
+ background-color: #6a6969 !important;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ transition: transform .5s;
+}
+ .bg-chart-purchase:hover{
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+transform: scale(1.05); 
+ }
+.panel-title-purchase{
+	color:white !important;
+	background-color: transparent !important;
+	border-bottom: none !important;
+}
+.card-purchase {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+    float: left;
+    width: 47%;
+    margin: 0px 6px 0px 6px;
+    margin-top: 15px;
+    height: 198px;
+    transition: transform .4s;
+    background-color: #6a6969;
+}
+.card-purchase:hover{
+transform: scale(1.05); 
+}
+.col-inner-purchase{
+float: left;
+  width: 70%;
+  color:white;
+}
+.col-inner-val-purchase{
+float: right;
+  width: 30%;
+  color:white;
 }
