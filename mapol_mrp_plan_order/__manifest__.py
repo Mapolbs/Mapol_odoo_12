@@ -3,7 +3,7 @@
 {
     "name": "Material Planning before Production",
     'version': '12.0.2.0.0',
-    "author" : "Mapol Business Solution Pvt Ltd",
+    "author" : "Mapol Business Solutions Pvt Ltd",
     "website": "http://www.mapolbs.com/",
     'images': ['static/description/icon.png'],
     'summary': "Module helps to plan for the material and its corresponding bill of material approval before proceeding the manufacturing order.",
