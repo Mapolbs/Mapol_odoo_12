@@ -36,14 +36,14 @@ class InwardEntry(models.Model):
                     line.inward_entry_count = line.inward_entry_count + 1
                     if line.picking_ids:
                         for picking in line.picking_ids:
-                            picking.gate_entry_check = True
+                            picking.onchange_gate_check()
             if self.sale_return_ids:
                 for line in self.sale_return_ids.sale_id:
                     line.inward_entry_id = self.id
                     line.inward_entry_count = line.inward_entry_count + 1
                     if line.picking_ids:
                         for picking in line.picking_ids:
-                            picking.gate_entry_check = True
+                            picking.onchange_gate_check()
 
 
 class PurchaseInward(models.Model):
@@ -61,8 +61,8 @@ class PurchaseInward(models.Model):
 class Purchase(models.Model):
     _inherit = 'purchase.order'
     
-    inward_entry_id = fields.Many2one('inward.entry','Inward Entry Check')
-    inward_entry_count = fields.Integer('Inward Entry Count',default=0)
+    inward_entry_id = fields.Many2one('inward.entry','Inward Entry Check',copy=False)
+    inward_entry_count = fields.Integer('Inward Entry Count',default=0,copy=False)
     
     @api.multi
     def action_view_inward_entry(self):
@@ -90,8 +90,8 @@ class SaleReturn(models.Model):
 class Sale(models.Model):
     _inherit = 'sale.order'
     
-    inward_entry_id = fields.Many2one('inward.entry','Inward Entry Check')
-    inward_entry_count = fields.Integer('Inward Entry Count',default=0)
+    inward_entry_id = fields.Many2one('inward.entry','Inward Entry Check',copy=False)
+    inward_entry_count = fields.Integer('Inward Entry Count',default=0,copy=False)
     
     @api.multi
     def action_view_inward_entry(self):
@@ -110,8 +110,22 @@ class Sale(models.Model):
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
      
-    gate_entry_check = fields.Boolean('Gate Entry Check',default=False)
-
+    gate_entry_check = fields.Boolean('Gate Entry Check',default=False,compute="onchange_gate_check",store=True)
+    
+    @api.depends('picking_type_id')
+    def onchange_gate_check(self):
+        for rec in self:
+            if not rec.origin:
+                rec.gate_entry_check = True
+            elif rec.picking_type_id.name == 'Delivery Orders':
+                rec.gate_entry_check = True
+            elif rec.picking_type_id.name == 'Receipts':
+                purchase_id = self.env['purchase.order'].search([('name','=',rec.origin)])
+                if purchase_id.inward_entry_id:
+                    rec.gate_entry_check = True
+                else:
+                    rec.gate_entry_check = False
+                    
 
  
     
