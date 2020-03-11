@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <t t-name="mapol_sale_dashboard.sale_dashboard">
+        <!--View-->
+        <div class="all_dash col-lg-12">
+            <!-- Sale Dashboard -->
+            <div>
+                <div class="dash-heading">
+                     <div class="panel-heading">
+                         <h1 class="panel-title">SALE DASHBOARD</h1>
+                     </div>
+                </div>
+                
+                <!--Dashboard buttons-->
+                <div class="row row-sm">
+                	<div class="column-dash">
+                		<div class="bg-dash dash-sale">
+                			<a href="javascript:;" class="dashboard-block total-sales-count">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL SALE ORDERS</p>
+					                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.sale_sum"/></p>
+					                <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.total_sales_count"/></span>
+					            </div>
+				            </a>
+			            </div>
+			            <!-- <div class="bg-dash dash-quot">
+                			<a href="javascript:;" class="dashboard-block month-quotations">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH QUOTATIONS</p>
+			                 		<p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.month_quotations_total"/></p>
+			                  		<span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.month_quotations_count"/></span>
+					            </div>
+				            </a>
+			            </div> -->
+			            <div class="bg-dash dash-inv">
+                			<a href="javascript:;" class="dashboard-block to-invoice">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">PENDING Sale Order</p>
+				                    <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.sale_invoice_total"/></p>
+				                    <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.to_invoice"/></span>
+					            </div>
+				            </a>
+			            </div>
+			            <div class="bg-dash dash-quot">
+                			<a href="javascript:;" class="dashboard-block fully-invoice">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">Invoice Value</p>
+			                 		<p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.fully_sum"/></p>
+			                  		<span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.fully_count"/></span>
+					            </div>
+				            </a>
+			            </div>
+			            <div class="bg-dash dash-tot">
+                			<a href="javascript:;" class="dashboard-block cancel-order">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">CANCEL ORDERS</p>
+					                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.cancel_sum"/></p>
+					                <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.cancel_count"/></span>
+					            </div>
+				            </a>
+			            </div>
+			            <!-- <div class="bg-dash dash-tot">
+                			<a href="javascript:;" class="dashboard-block total-quotations-count">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">Top Sale Customers</p>
+					                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.quotations_sum"/></p>
+					                	<table class="table table-borderless table-sm">
+					                		<t t-foreach="widget.sale_data.partner_data" t-as='partner'>
+						                		<tr>
+						                			<td><t t-esc="partner['partner_ids']"/> </td>
+						                			<td><t t-esc="partner['count']"/></td>
+						                			<td><t t-esc="partner['sum']"/></td>
+						                		</tr>
+					                		</t>
+					                	</table>
+					            </div>
+				            </a>
+			            </div>  -->
+			            <!-- <div class="bg-dash dash-tot">
+                			<a href="javascript:;" class="dashboard-block total-quotations-count">
+	                			<div class="inner-dash">
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">TOTAL QUOTATIONS</p>
+					                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.sale_data.quotations_sum"/></p>
+					                <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.sale_data.total_quotations_count"/></span>
+					            </div>
+				            </a>
+			            </div> -->
+        		</div>
+           	<!-- charts -->
+                <div class="column-chart">
+                	<div class="bg-chart chart-bar" style="background-color:white">
+                		<div class="panel-heading">
+                            <h3 class="panel-title panelheadingpad">Yearly Sales
+                            <button type="button" id="generate_sale_pdf"  style="float:right"
+							class="btn btn-success btn-lg" data-placement="bottom" title="Download Pdf!">
+							<i class="fa fa-file-pdf-o"/></button>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                              <canvas id="myChart"/>
+                        </div>
+                	</div>
+                	
+                	
+                	<div class="row-card">
+		                	<div class="card-full">
+		                		<div class="card-head">
+		                			<h4>Top Sale Customers</h4>
+		                		</div>
+		                		<div class="card-body" style="padding:0px !important">
+		                			<div class="row-inner">
+		                			<a href="javascript:;" class="dashboard-block top-sale-customer" style="color:#707070">
+			                				<table class="table table-bordered table-sm">
+			                					<thead style="font-weight:bold">
+			                						<tr>
+			                							<td>Customer</td>
+			                							<!-- <td>Count</td> -->
+			                							<td>Value</td>
+			                						</tr>
+			                					</thead>
+			                					<tbody>
+			                						<t t-foreach="widget.sale_data.partner_data" t-as='partner'>
+			                							<tr>
+			                								<td><t t-esc='partner["partner_ids"]'></t></td>
+			                								<!-- <td><t t-esc='partner["count"]'></t></td> -->
+			                								<td><t t-esc='partner["sum"]'></t></td>
+			                							</tr>
+			                						</t>
+			                					</tbody>
+			                				</table>
+			                				
+			                				<!-- <div class="col-inner-new">
+			                					<div><span><t t-esc="partner['partner_ids']"/></span></div>
+			                				</div>
+			                				<div class="col-inner-val-new">
+			                					<div><span><t t-esc="partner['count']"/></span></div>
+			                				</div>
+			                				<div class="col-inner-val-new">
+			                					<div><span><t t-esc="partner['sum']"/></span></div>
+			                				</div> -->
+			                				</a>
+		                			</div>
+		                			
+		                		</div>
+		                	</div>
+		                <!-- <a href="javascript:;" class="dashboard-block due_6_month">
+		                	<div class="card-full">
+		                		<div class="card-head">
+		                			<h4>Due For 6months</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                					<div><span>Due Paid Count:</span></div>
+		                					<div><span>Due Paid Total:</span></div>
+		                					<div><span>Due Pending Count:</span></div>
+		                					<div><span>Due Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.due_180"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_final"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a> -->
+                	</div> 
+                	
+		                
+                	
+                	
+                	<!-- <div class="row-card">
+	                	<div class="card">
+	                		<a href="javascript:;" class="dashboard-block due_today">
+		                		<div class="card-head">
+		                			<h4>Today Due</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                					<div><span>Due Paid Count:</span></div>
+		                					<div><span>Due Paid Total:</span></div>
+		                					<div><span>Due Pending Count:</span></div>
+		                					<div><span>Due Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.today_due"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.today_total"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.today_due_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.today_due_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.today_due_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.today_due_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</a>
+	                	</div>
+	                	<div class="card">
+	               			<a href="javascript:;" class="dashboard-block due_1_month">
+		                		<div class="card-head">
+		                			<h4>Due For 1month</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                					<div><span>Due Paid Count:</span></div>
+		                					<div><span>Due Paid Total:</span></div>
+		                					<div><span>Due Pending Count:</span></div>
+		                					<div><span>Due Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.due_30"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_30_final"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_30_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_30_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_30_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_30_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+	                		</a>
+	                	</div>
+                	</div> -->
+                </div>
+                
+            <div class="column-chart">
+                	<div class="bg-chart chart-pie" style="background-color:white">
+                		<div class="panel-heading">
+                            <h3 class="panel-title panelheadingpad">Top FG Quantity
+                        	<button type="button" style="float:right" 
+                            id="generate_sale_pie_pdf" class="btn btn-success btn-lg" ata-placement="bottom" title="Download Pdf!">
+                            <i class="fa fa-file-pdf-o"/></button>
+                           </h3>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="salepieChart" />
+                        </div>
+                	</div>
+                	<div class="row-card">
+	                	<div class="card">
+	                		<div class="card-head">
+	                			<h4>Top Selling Products</h4>
+	                		</div>
+	                		<div class="card-body">
+	                			<div class="row-inner">
+	                				<div class="col-inner">
+	                					<t t-foreach='widget.sale_data.top_prod_label' t-as='product'>
+	                						<div><span><t t-esc="product"/></span></div>
+	                					</t>
+	                				</div>
+	                				<div class="col-inner-val">	
+	                					<t t-foreach='widget.sale_data.top_prod_count' t-as='count'>
+	                						<div><span><t t-esc="count"/></span></div>
+	                					</t>
+	                				</div>
+	                			</div>
+	                		</div>
+	                	</div>
+                	</div>
+                	<div class="row-card-new">
+		                <a href="javascript:;" class="dashboard-block due_pending">
+		                	<div class="card-new">
+		                		<div class="card-head">
+		                			<h4>Due</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.due_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+	                	<a href="javascript:;" class="dashboard-block due_6_month">
+		                	<div class="card-new">
+		                		<div class="card-head">
+		                			<h4>Over Due</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.overdue_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.overdue_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+		            </div>
+                	
+                	<!-- <div class="row-card">
+                		<a href="javascript:;" class="dashboard-block due_3_month">
+		                	<div class="card">
+		                		<div class="card-head">
+		                			<h4>Due For 3months</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                					<div><span>Due Paid Count:</span></div>
+		                					<div><span>Due Paid Total:</span></div>
+		                					<div><span>Due Pending Count:</span></div>
+		                					<div><span>Due Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.due_90"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_90_final"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_90_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_90_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_90_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_90_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+		                <a href="javascript:;" class="dashboard-block due_6_month">
+		                	<div class="card">
+		                		<div class="card-head">
+		                			<h4>Due For 6months</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                					<div><span>Due Paid Count:</span></div>
+		                					<div><span>Due Paid Total:</span></div>
+		                					<div><span>Due Pending Count:</span></div>
+		                					<div><span>Due Pending Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val">
+		                					<div><span><t t-esc="widget.sale_data.due_180"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_final"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_done_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_done_total"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.sale_data.due_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+                	</div> -->
+                </div>
+            </div>
+           	
+           	
+        </div>
+     </div>
+			            
+    </t>
+</templates>

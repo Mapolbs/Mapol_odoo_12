@@ -7,11 +7,11 @@
 		<field name="inherit_id" ref="purchase.purchase_order_form" />
 		<field name="arch" type="xml">
 			<xpath expr="//sheet/div/button[@name='action_view_invoice']" position="before">
-                        <button type="object" name="action_view_inward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('inward_entry_id','=',False)]}">
+                        <button type="object" name="action_view_inward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('inward_entry_count','=',0)]}">
                             <field name="inward_entry_id" invisible="1"/>
                             <field name="inward_entry_count" widget="statinfo" string="Inward Entry"/>
                         </button>
-                        <button type="object" name="action_view_outward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('outward_entry_id','=',False)]}">
+                        <button type="object" name="action_view_outward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('outward_entry_count','=',0)]}">
                             <field name="outward_entry_id" invisible="1"/>
                             <field name="outward_entry_count" widget="statinfo" string="Outward Entry"/>
                         </button>
@@ -27,11 +27,11 @@
 		<field name="inherit_id" ref="sale.view_order_form" />
 		<field name="arch" type="xml">
 			<xpath expr="//sheet/div/button[@name='action_view_invoice']" position="before">
-	            <button type="object" name="action_view_inward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('inward_entry_id','=',False)]}">
+	            <button type="object" name="action_view_inward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('inward_entry_count','=',0)]}">
 	                <field name="inward_entry_id" invisible="1"/>
 	                <field name="inward_entry_count" widget="statinfo" string="Inward Entry"/>
 	            </button>
-	            <button type="object" name="action_view_outward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('outward_entry_id','=',False)]}">
+	            <button type="object" name="action_view_outward_entry" class="oe_stat_button" icon="fa-check-circle-o" attrs="{'invisible':[('outward_entry_count','=',0)]}">
 	                <field name="outward_entry_id" invisible="1"/>
 	                <field name="outward_entry_count" widget="statinfo" string="Outward Entry"/>
 	            </button>
@@ -53,7 +53,17 @@
 			</xpath>
 			<xpath expr="//field[@name='origin']" position="after">
             	<field name="gate_entry_check" invisible='1'/>
+            	<field name="quantity_check" invisible='1'/>
+            	<!-- <field name="gate_validation_strh" style="background-color:red" readonly='1' attrs="{'invisible':[('quantity_check','=',True)]}"/>
+            	<field name="gate_validation_str" style="background-color:red" readonly='1' attrs="{'invisible':[('quantity_check','=',True)]}"/> -->
 			</xpath>
+			<xpath expr="//field[@name='state']" position='before'>
+				<field name="gate_validation_strh" style="background-color:red" readonly='1' attrs="{'invisible':[('quantity_check','=',True)]}"/>
+			</xpath>
+			<!-- <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position="after">
+				<field name="gate_validation_str" style="color:red"/>
+				<field name="quantity_check"/>
+			</xpath> -->
 		</field>
 	</record>
 	
