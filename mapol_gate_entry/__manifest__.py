@@ -5,6 +5,7 @@
     'version': '12.0',
     "author" : "Mapol Business Solutions Pvt Ltd",
     "website": "http://mapolbs-opensource.com",
+    'images': ['static/description/icon.png'],    
     'summary': "This module provides a gate entry process against the purchase order.",
     'category': 'Gate Entry',
     "depends": [

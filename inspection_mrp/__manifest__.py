@@ -7,6 +7,7 @@
     "version": "12.1",
     "category": "Tools",
     'author' : 'Mapol Business Solution Pvt Ltd',
+    'images': ['static/description/icon.png'],    
     'website' : 'http://www.mapolbs.com/',
     "description": """
         To check the quality for the produced product using customized checklist.
