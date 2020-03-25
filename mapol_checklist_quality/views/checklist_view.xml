@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="view_checklist_category_tree" model="ir.ui.view">
+		<field name="name">checklist.category.tree</field>
+		<field name="model">checklist.category</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Checklist Category">
+				<field name="name" />
+				<field name="code" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_checklist_category_form" model="ir.ui.view">
+		<field name="name">checklist.category.form</field>
+		<field name="model">checklist.category</field>
+		<field name="arch" type="xml">
+			<form string="Checklist Category">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" />
+							<field name='code'/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_checklist_category_menu"
+		model="ir.actions.act_window">
+		<field name="name">Checklist Category</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">checklist.category</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a record
+			</p>
+		</field>
+	</record>
+
+
+	<menuitem id="checklist_category_menu_view" name="Quality Checklist" parent="stock.menu_stock_inventory_control" sequence="6" />
+		<menuitem id="menu_checklist_category_view" name="Checklist Category"
+		action="action_checklist_category_menu" parent="checklist_category_menu_view"
+		sequence="1" />
+
+</odoo>

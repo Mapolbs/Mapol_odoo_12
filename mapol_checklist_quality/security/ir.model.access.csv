@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_checklist_set_user,checklist.set.user,model_checklist_set,stock.group_stock_user,1,1,0,0
+access_checklist_set_manager,checklist.set.manager,model_checklist_set,stock.group_stock_manager,1,1,1,1
+access_checklist_main_user,checklist.main.user,model_checklist_main,stock.group_stock_user,1,1,1,0
+access_checklist_main_manager,checklist.main.manager,model_checklist_main,stock.group_stock_manager,1,1,1,1
+access_checklist_main_line_user,checklist.main.line.user,model_checklist_main_line,stock.group_stock_user,1,1,1,0
+access_checklist_main_line_manager,checklist.main.line.manager,model_checklist_main_line,stock.group_stock_manager,1,1,1,1

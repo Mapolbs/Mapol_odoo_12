@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+<record id="email_template_mrp_plan" model="mail.template">
+            <field name="name">MRP Plan: Send by email</field>
+            <field name="model_id" ref="mrp_plan.model_mrp_plan"/>
+            <field name="email_from">${object.env.user.email_formatted |safe}</field>
+            <field name="partner_to">${object.user_id.partner_id.id}</field>
+            <field name="email_cc">${object.user_id.partner_id.email}</field>
+            <field name="subject">New Production assigned to ${object.user_id.name or 'n/a' }.</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    	Dear ${object.user_id.name},
+    	<br></br>
+    	The MO for the Product ${object.product_id.name} is assigned to you.
+    </p>
+</div>
+            </field>
+            <field name="lang">${object.user_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        
+       </data>
+      </odoo>
+      

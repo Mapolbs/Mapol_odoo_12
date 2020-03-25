@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="view_checklist_main_tree" model="ir.ui.view">
+		<field name="name">checklist.main.tree</field>
+		<field name="model">checklist.main</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Quality Cheklist" create="false" delete="false">
+				<field name="name"/>
+				<field name="stock_id" />
+				<!-- <field name="checklist_category_id" /> -->
+				<field name="product_id" />
+				<field name='purchase_id'/>
+				<field name='state'/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_checklist_main_form" model="ir.ui.view">
+		<field name="name">checklist.main.form</field>
+		<field name="model">checklist.main</field>
+		<field name="arch" type="xml">
+			<form string="Quality Cheklist" create="false" delete="false">
+			 	<header>
+			 	  <button name="chg_done" string="Pass" type="object" attrs="{'invisible':[('state','in',('pass','fail'))]}"/>
+			 	  <button name="chg_fail" string="Fail" type="object" attrs="{'invisible':[('state','in',('pass','fail'))]}"/>
+			 	  <button name="chg_partial" string="Partial" type="object" attrs="{'invisible':[('state','in',('pass','fail','partial'))]}"/>
+                  <field name="state" widget="statusbar"/>
+                </header>
+				<sheet>
+					 <h1 class="hidden-xs">
+                        <field name="name" readonly="1"/>
+                    </h1>
+					<group>
+						<group>
+							<field name="stock_id" readonly="1"/>
+							<field name='product_id' readonly="1"/>
+							<field name='purchase_id' readonly='1'/>
+						</group>
+						<group>
+							<!-- <field name="checklist_category_id" /> -->
+						</group>
+					</group>
+					<notebook>
+						<page string="Checklist" name="checklist_main_line">
+							<field name="checklist_line_ids">
+								<tree editable="bottom" create="false">
+									<field name="checklist_main_id" invisible="1"/>
+									<!-- <field name="checklist_category_id" invisible="1"/> -->
+									<field name="product_id" invisible="1"/>
+									<field name="checklist_set_id" attrs="{'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="type" invisible="1"/>
+									<field name="max_value" attrs="{'invisible':[('type','!=','numeric')],'required':[('type','=','numeric')],'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="min_value" attrs="{'invisible':[('type','!=','numeric')],'required':[('type','=','numeric')],'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="image" widget="image" attrs="{'invisible':[('type','!=','image')],'required':[('type','=','image')],'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="product_value" attrs="{'invisible':[('type','!=','numeric')],'required':[('type','=','numeric')],'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="description" attrs="{'invisible':[('type','!=','descriptive')],'required':[('type','=','descriptive')],'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="checklist_test" attrs="{'invisible':[('type','!=','image')],'required':[('type','=','image')],'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+									<field name="remarks" attrs="{'readonly':[('parent.state','in', ('pass','fail'))]}"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_checklist_main_filter" model="ir.ui.view">
+        <field name="name">Quality Checklist</field>
+        <field name="model">checklist.main</field>
+        <field name="arch" type="xml">
+            <search string="Quality Checklist">
+            	 <group expand="0" string="Group By">  
+                	<filter name="purchase_id" string="Purchase Order" context="{'group_by':'purchase_id'}"/>
+                </group>
+           </search>
+        </field>
+    </record>
+	
+
+	<record id="action_checklist_main_menu"
+		model="ir.actions.act_window">
+		<field name="name">Quality Checklist</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">checklist.main</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_purchase_id': 1}</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a record
+			</p>
+		</field>
+	</record>
+
+
+		<menuitem id="menu_checklist_main_view" name="Quality Cheklist"
+		action="action_checklist_main_menu" parent="stock.menu_stock_warehouse_mgmt"
+		sequence="6" />
+		
+
+        <!-- Sequences for Checklist Main -->
+        <record id="seq_quality_checklist" model="ir.sequence">
+            <field name="name">Quality CheckList</field>
+            <field name="code">checklist.main</field>
+            <field name="prefix">QC-</field>
+            <field name="padding">2</field>
+        </record>
+
+</odoo>

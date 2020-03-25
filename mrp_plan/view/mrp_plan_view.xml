@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="view_mrp_plan_tree" model="ir.ui.view">
+		<field name="name">mrp.plan.tree</field>
+		<field name="model">mrp.plan</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="MRP Plan" decoration-success="state=='approve'" decoration-muted="state=='cancel'">
+				<field name="name"/>
+				<!-- <field name="location_dest_id"/> -->
+				<field name="product_id"/>
+				<field name="plan_date"/>
+				<field name="production_date"/>
+				<field name="plan_qty"/>
+				<field name="uom_id"/>
+				<field name="bom_id"/>
+				<field name="user_id"/>
+				<field name="is_subcontract"/>
+				<field name="production_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	<record id="view_mrp_plan_form" model="ir.ui.view">
+		<field name="name">mrp.plan.form</field>
+		<field name="model">mrp.plan</field>
+		<field name="arch" type="xml">
+			<form string="MRP Plan">
+				<header>
+					<!-- <button name="confirm" string="Confirm" type="object" attrs="{'invisible':[('state','in',('approve','confirm','cancel'))]}" groups="mrp_plan.group_mrp_plan_manager"/> -->
+					<button name="approve" string="Approve" type="object" attrs="{'invisible':[('state','in',('approve','cancel'))]}" groups="mrp_plan.group_mrp_plan_manager"/>
+				 	<button name="cancel" string="Cancel" type="object" attrs="{'invisible':[('state','in',('cancel','approve'))]}" groups="mrp_plan.group_mrp_plan_manager"/>
+	                <field name="state" widget="statusbar"/>
+				</header>	
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+                    	<button name="manufacture_order" icon="fa-linode" class="oe_stat_button" string="Manufacture" type="object" attrs="{'invisible':[('production_id','=',False)]}" />
+                    </div>
+					 <h1 class="hidden-xs">
+                        <field name="name" readonly="1"/>
+                    </h1>
+					<group>
+						<group>
+							<!-- <field name="location_dest_id" attrs="{'readonly':[('state','=','approve')]}"/> -->
+							<field name="product_id" attrs="{'readonly':[('state','=','approve')]}" required="1"/>
+							<field name="plan_date" attrs="{'readonly':[('state','=','approve')]}"/>
+							<field name="production_date" attrs="{'readonly':[('state','=','approve')]}" required="1"/>
+							<label for="plan_qty"/>
+                            <div class="o_row">
+                                <field name="plan_qty" attrs="{'readonly':[('state','=','approve')]}" required="1"/>
+                                <field name="uom_id" options="{'no_open':True,'no_create':True}" attrs="{'readonly':[('state','=','approve')]}" required="1"/>
+                            </div>
+						</group>
+						<group>
+							<field name="bom_id" attrs="{'readonly':[('state','=','approve')]}" required="1"/>
+							<field name="user_id" attrs="{'readonly':[('state','=','approve')]}"/>
+							<field name="is_subcontract" widget="boolean_toggle"/>
+							<field name="production_id" invisible="1"/>
+							<field name="progress" widget="progressbar" style="background-color: #3b9ed1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<!-- Kanban View -->
+
+	<record id="mrp_plan_kanban_view" model="ir.ui.view">
+		<field name="name">mrp.plan.kanban</field>
+		<field name="model">mrp.plan</field>
+		<field name="arch" type="xml">
+			<kanban class="oe_background_grey o_kanban_dashboard o_emphasize_colors o_plan_kanban">
+				<field name="name" />
+				<field name="product_id" />
+				<field name="plan_date" />
+				<field name="production_date" />
+				<field name="plan_qty" />
+				<field name="user_id" />
+				<field name="state"/>
+				<field name="color"/>
+				<field name="progress"/>
+				<field name="max_progress"/>
+				<templates>
+					<t t-name="kanban-box">
+						<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+							 <div t-attf-class="o_kanban_card_header">
+								<div class="o_kanban_card_header_title">
+									<div class="o_primary">
+										<h2>
+											<field name="name" />
+										</h2>
+									</div>
+									<div class="o_secondary">
+										<field class="o_secondary" name="product_id" />
+									</div>
+									<div class="o_kanban_manage_button_section">
+	                                    <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/></a>
+	                                    <div style="background-color:#2b9a9d;float:right;color:black;padding:3px;border-radius:5px;font-size:9px">
+											<field name="state"/>
+										</div>
+	                                </div>
+								</div>
+								<div class="oe_kanban_details">
+									<div style="color:#adb5bd">
+										<field name="production_date" />
+									</div>
+									<div>
+										<div style="float:left;background-color:#9d2b7ad9;color:black;padding:3px;border-radius:15px;font-size:10px">
+											<field name='plan_qty'/>
+										</div>
+										<div style="float:right">
+											<field name='user_id'/>
+										</div>
+									</div>
+								</div> 
+								
+								<div>
+									<field name="progress" widget="gauge" options="{'max_field': 'max_progress'}"></field>
+								</div>
+							</div>
+							<div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+	                           <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+	                               <div class="col-8" role="menuitem" aria-haspopup="true">
+	                                   <ul class="oe_kanban_colorpicker" data-field="color" role="menu"/>
+	                               </div>
+	                           </div>
+	                        </div>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+	
+	
+	<record id="action_mrp_plan_menu"
+		model="ir.actions.act_window">
+		<field name="name">MRP Plan</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">mrp.plan</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">kanban,tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a record
+			</p>
+		</field>
+	</record>
+
+
+		<menuitem id="menu_mrp_plan_view" name="MRP Plan"
+		action="action_mrp_plan_menu" parent="mrp.menu_mrp_manufacturing"
+		sequence="0"/>
+		
+
+        <!-- Sequences for Checklist Main -->
+        <record id="seq_mrp_plan" model="ir.sequence">
+            <field name="name">MRP Plan</field>
+            <field name="code">mrp.plan</field>
+            <field name="prefix">MRP-PN</field>
+            <field name="padding">2</field>
+        </record>
+        
+        
+        <!-- MRP Production View -->
+        <record model="ir.ui.view" id="mrp_production_form_view_inherit_mrp_plan">
+			<field name="name">mrp_production_form_view_inherit_mrp_plan</field>
+			<field name="model">mrp.production</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='date_planned_start']" position="before">
+					<field name="planned_id"/>
+					<field name="planned_date"/>
+				</xpath>
+				<xpath expr="//field[@name='date_planned_start']" position="attributes">
+					<attribute name="string">Production Date</attribute>
+				</xpath>
+	        </field>
+		</record> 
+        
+</odoo>	
+			
+			
+			
+			
