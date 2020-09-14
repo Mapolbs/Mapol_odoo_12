@@ -12,7 +12,8 @@
         "base",
         "purchase",
         "sale",
-        "stock"
+        "stock",
+        'custom_purchase',
 
     ],
     'currency': 'EUR',

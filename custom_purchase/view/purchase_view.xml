@@ -1,0 +1,289 @@
+<odoo>
+
+	<record id="purchase_order_form_inherit_custom_purchase"
+		model="ir.ui.view">
+		<field name="name">purchase.order.form</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='date_order']" position="after">
+				<field name="is_production_purchase" />
+				<field name="purchase_type" invisible="1"/>
+				<field name="state_type" invisible='1'/>
+				<field name="open_order" attrs="{'invisible':[('open_order','=',True)]}"/>
+				<field name="close_order" attrs="{'invisible':[('close_order','=',True)]}"/>
+			</xpath>
+			<xpath
+				expr="//notebook/page[1]/field[@name='order_line']/tree/field[@name='product_id']"
+				position="attributes">
+				<attribute name="domain">[('is_production_purchase','=',is_production_purchase)]
+				</attribute>
+			</xpath>
+			<xpath
+				expr="//notebook/page[1]/field[@name='order_line']/tree/field[@name='product_id']"
+				position="after">
+				<field name="is_production_purchase" invisible='1' />
+			</xpath>
+			<xpath expr="//field[@name='order_line']" position="attributes">
+				<attribute name="context">{'default_is_production_purchase':is_production_purchase}
+				</attribute>
+			</xpath>
+			<xpath expr="//header/field[@name='state']"
+				position="attributes">
+				<attribute name="statusbar_visible">draft,sent,purchase</attribute>
+			</xpath>
+			<!-- <xpath expr="//field[@name='partner_ref']" position="before">
+				<field name="vendor_ref_date"/>
+			</xpath> -->
+			<!-- <xpath expr="//field[@name='partner_ref']" position="attributes">
+				<attribute name="string">Vendor Invoice No</attribute>
+			</xpath> -->
+			<!-- <xpath expr="//header/button[@name='button_cancel']"
+				position="after">
+				<button name='change_open_po' string="Open PO" states="purchase" type="object" attrs="{'invisible': [('state', 'not in', ('purchase'))]}"/>
+			</xpath>
+			<xpath expr="//header/button[@name='button_done']"
+				position="attributes">
+				<attribute name="string">Close PO</attribute>
+			</xpath> -->
+			<xpath expr="//header/button[@name='button_done']"
+				position="replace">
+			</xpath>
+			<!-- <xpath expr="//header/button[@name='button_cancel']"
+				position="attributes">
+				<attribute name="states">draft,to approve,sent,purchase,open_po</attribute>
+			</xpath> -->
+			<xpath expr="//header/button[@name='action_rfq_send']"
+				position="replace">
+				<button name="action_rfq_send" states="draft" string="Send by Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
+				<button name="action_rfq_send" states="open_po" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
+				<button name="action_rfq_send" states="sent" string="Re-Send by Email" type="object" context="{'send_rfq':True}"/>
+			</xpath>
+			<!-- <xpath expr="//header/button[@name='button_cancel']"
+				position="attributes">
+				<attribute name="states">draft,to approve,sent,purchase,open_po</attribute>
+			</xpath> -->
+			<xpath expr="//field[@name='fiscal_position_id']" position="replace">
+			</xpath>
+		</field>
+	</record>
+	<record id="view_purchase_order_filter_inherit_custom_purchase" model="ir.ui.view">
+		<field name="name">purchase.order.filter</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id"
+			ref="purchase.view_purchase_order_filter" />
+		<field name="arch" type="xml">
+			<xpath expr="//filter[@name='expected_date']" position="after">
+				<filter string="Purchase Type" name="purchase_type" domain="[]" context="{'group_by':'purchase_type'}"/>
+				<filter string="PO Type" name="state_type" domain="[]" context="{'group_by':'state_type'}"/>
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="purchase.purchase_form_action" model="ir.actions.act_window">
+			<field name="context" eval="{'search_default_purchase_type':1,'search_default_state_type':1}"/>  
+	</record>
+	<record id="purchase.purchase_rfq" model="ir.actions.act_window">
+			<field name="context" eval="{'search_default_purchase_type':1,'search_default_state_type':1}"/>  
+	</record>
+	
+	<!-- <record
+		id="product_normal_form_view_inherit_custom_purchase"
+		model="ir.ui.view">
+		<field name="name">product.product.form</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id"
+			ref="product.product_normal_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='default_code']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+		</field>
+	</record> -->
+	
+	<record id="product_template_only_form_view_inherit_custom_purchase"
+		model="ir.ui.view">
+		<field name="name">product.template.common.form</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id"
+			ref="product.product_template_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='route_ids']" position="after">
+				<field name="is_production_purchase"/>
+			</xpath>
+			<!--  -->
+			<xpath expr="//field[@name='type']" position="before">
+				<field name="model" required='1'/>
+				<field name="default_code" string="Product Code" required='1'/>
+			</xpath>
+		</field>
+	</record>
+	
+	
+	<!-- Action View Purchase order-->
+	
+	<record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="name">Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">kanban,tree,form,pivot,graph,calendar,activity</field>
+            <field name="domain">[('state','in',('purchase', 'done'))]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a quotation
+              </p><p>
+                It will be converted into a purchase order.
+              </p>
+            </field>
+        </record>
+    
+    <!-- Action View Quotation Purchase order-->   
+    <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+            <field name="name">Requests for Quotation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">kanban,tree,form,pivot,graph,calendar,activity</field>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a request for quotation
+              </p><p>
+                The quotation contains the history of the discussion
+                you had with your vendor.
+              </p>
+            </field>
+        </record>
+        
+    <!-- Purchase Orders Kanban View  -->
+       <record model="ir.ui.view" id="purchase.view_purchase_order_kanban">
+           <field name="name">purchase.order.kanban</field>
+           <field name="model">purchase.order</field>
+           <field name="arch" type="xml">
+               <kanban class="o_kanban_mobile">
+                   <field name="name"/>
+                   <field name="partner_id"/>
+                   <field name="amount_total"/>
+                   <field name="state"/>
+                   <field name="date_order"/>
+                   <field name="currency_id"/>
+                   <field name="billing_progress"/>
+                   <field name='color'/>
+                   <progressbar field="state" colors="{&quot;draft&quot;: &quot;warning&quot;, &quot;sent&quot;: &quot;info&quot;, &quot;purchase&quot;: &quot;success&quot;, &quot;cancel&quot;: &quot;danger&quot; }" sum_field="amount_total"/>
+                   <templates>
+                       <t t-name="kanban-box">
+                           <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+                               <div class="o_kanban_record_top mb16">
+                                   <div class="o_kanban_record_headings mt4">
+                                       <h2>
+                                       	<field name="name"/>
+                                       </h2>
+                                   </div>
+                                   <strong><field name="amount_total" widget="monetary"/></strong>
+                               </div>
+                               <div class="oe_kanban_bottom_left">
+                               	<strong>
+                                   	<field name='partner_id'/>
+                                   </strong>
+                               </div>
+                               <div class="o_kanban_record_bottom">
+                                   <div class="oe_kanban_bottom_left">
+                                       <span><t t-esc="record.date_order.value and record.date_order.value.split(' ')[0] or False"/></span>
+                                   </div>
+                                   <div class="oe_kanban_bottom_right">
+                                       <field name="state" widget="label_selection" options="{'classes': {'draft': 'default', 'cancel': 'default', 'done': 'success', 'approved': 'warning'}}"/>
+                                   </div>
+                               </div>
+                               <div>
+                               	<field name="billing_progress" widget='percentpie'/>
+                               </div>
+                               <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+                           <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                               <div class="col-8" role="menuitem" aria-haspopup="true">
+                                   <ul class="oe_kanban_colorpicker" data-field="color" role="menu"/>
+                               </div>
+                           </div>
+                        </div>
+                           </div>
+                       </t>
+                   </templates>
+               </kanban>
+           </field>
+       </record>
+       
+       <!-- partner view -->
+       <record id="view_partner_form_inherit_custom_purchase" model="ir.ui.view">
+			<field name="name">res.partner.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='ref']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='type']" position="before">
+					<field name="ref" string="Customer/Supplier Code"/>
+				</xpath>
+			</field>
+		</record>
+       
+       <!-- partner sequence -->
+       <data noupdate="1">
+        <record id="sequence_vendor_number" model="ir.sequence">
+            <field name="name">Vendor Number</field>
+            <field name="code">vendor.number</field>
+            <field name="prefix"></field>
+            <field name="padding" eval="6"/>
+        </record>
+    	</data>
+       
+       
+	<!-- Open PO State View -->
+	<!-- <record id="open_purchase_view_action" model="ir.actions.act_window">
+            <field name="name">Open PO</field>
+            <field name="res_model">purchase.order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{
+                    'create': False,
+            }
+            </field>
+            <field name="domain">[('state' ,'=', 'open_po')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Define a new transfer
+              </p>
+            </field>
+        </record>
+
+	<menuitem id="menu_open_po_view" name="Open PO"
+		action="open_purchase_view_action"
+		parent="purchase.menu_procurement_management"/> -->
+	
+	<!-- Close PO State View -->
+	<!-- <record id="close_purchase_view_action" model="ir.actions.act_window">
+           <field name="name">Close PO</field>
+           <field name="res_model">purchase.order</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,kanban,form</field>
+           <field name="context">{
+                   'create': False,
+           }
+           </field>
+           <field name="domain">[('state' ,'=', 'done')]</field>
+           <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+           <field name="help" type="html">
+             <p class="o_view_nocontent_smiling_face">
+               Define a new transfer
+             </p>
+           </field>
+       </record>
+
+	<menuitem id="menu_close_po_view" name="Close PO"
+		action="close_purchase_view_action"
+		parent="purchase.menu_procurement_management"/> -->
+		
+</odoo>

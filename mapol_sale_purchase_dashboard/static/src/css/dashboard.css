@@ -225,13 +225,41 @@ transform: scale(1.05);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 6px;
     float: left;
-    width: 47%;
+    width: 46%;
+    margin: 0px 6px 0px 6px;
+    margin-top: 15px;
+    height: 198px;
+    transition: transform .4s;
+}
+.card-new {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+    background-color: white;
+    float: right;
+    width: 48%;
+    margin: 0px 6px 0px 6px;
+    margin-top: 15px;
+    height: 91px;
+    transition: transform .4s;
+}
+.card-full {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+    background-color: white;
+    float: left;
+    width: 98%;
     margin: 0px 6px 0px 6px;
     margin-top: 15px;
     height: 198px;
     transition: transform .4s;
 }
 .card:hover{
+transform: scale(1.05); 
+}
+.card-new:hover{
+transform: scale(1.05); 
+}
+.card-full:hover{
 transform: scale(1.05); 
 }
 .card-head{
@@ -252,6 +280,16 @@ float: right;
   width: 30%;
   color:#6a6969;
 }
+.col-inner-new{
+float: left;
+  width: 50%;
+  color:#6a6969;
+}
+.col-inner-val-new{
+float: right;
+  width: 25%;
+  color:#6a6969;
+}
 .dash-sale{
 background: linear-gradient(230deg, #759bff, #843cf6);
 }
@@ -266,7 +304,7 @@ background: linear-gradient(316deg, #fc5286, #fbaaa2);
 }
 .all_dash-purchase {
     background-color: #4c4b4b;
-    padding-bottom:52px;
+    padding-bottom:65px;
 }
 .dash-heading-purchase{
  	padding: 5px;
@@ -303,7 +341,37 @@ transform: scale(1.05);
     transition: transform .4s;
     background-color: #6a6969;
 }
+.card-purchase-full {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+    background-color: #6a6969;
+    float: left;
+    width: 98%;
+    margin: 0px 6px 0px 6px;
+    margin-top: 15px;
+    height: 198px;
+    transition: transform .4s;
+    color: white;
+}
+.card-purchase-new {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
+    background-color: #6a6969;
+    color: white;
+    float: right;
+    width: 47%;
+    margin: 0px 6px 0px 6px;
+    margin-top: 15px;
+    height: 91px;
+    transition: transform .4s;
+}
 .card-purchase:hover{
+transform: scale(1.05); 
+}
+.card-purchase-full:hover{
+transform: scale(1.05); 
+}
+.card-purchase-new:hover{
 transform: scale(1.05); 
 }
 .col-inner-purchase{
@@ -315,4 +383,55 @@ float: left;
 float: right;
   width: 30%;
   color:white;
+}
+
+/*==============//mobile view================*/
+
+@media only screen and (max-width: 768px) {
+    .column-dash {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+    .column-chart {
+        float: left;
+        width: 100%;
+        padding: 10px;
+    }
+    .card-purchase {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 6px;
+        float: left;
+        width: 100% !important;
+        margin: 0px 6px 0px 6px;
+        margin-top: 15px;
+        height: 198px;
+        transition: transform .4s;
+        background-color: #6a6969;
+    }
+    .card {
+       
+        width: 100%;
+      
+    }
+    .card-new {
+       
+        width: 100%;
+      
+    }
+    .card-full {
+       
+        width: 100%;
+      
+    }
+    .card-purchase-full {
+       
+        width: 100%;
+      
+    }
+    .card-purchase-new {
+       
+        width: 100%;
+      
+    }
 }

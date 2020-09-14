@@ -27,7 +27,7 @@
 			            <div class="bg-dash dash-quot">
                 			<a href="javascript:;" class="dashboard-block month-shipments">
 	                			<div class="inner-dash">
-			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH SHIPMENTS</p>
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">THIS MONTH GRN</p>
 			                 		<p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.data.month_shipments_total"/></p>
 			                  		<span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.month_shipments_count"/></span>
 					            </div>
@@ -36,7 +36,7 @@
 			            <div class="bg-dash dash-inv">
                 			<a href="javascript:;" class="dashboard-block shipments">
 	                			<div class="inner-dash">
-			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">PENDING SHIPMENTS</p>
+			               			<p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">PENDING GRN</p>
 				                    <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1"><i class="fa fa-money"/> <t style="text-align:right" t-esc="widget.data.shipment_total"/></p>
 				                    <span class="tx-11 tx-medium tx-roboto tx-white-6">Count: <t t-esc="widget.data.shipments_count"/></span>
 					            </div>
@@ -56,10 +56,10 @@
            		<div class="column-chart">
                 	<div class="bg-chart-purchase chart-bar" style="background-color:white">
                 		<div class="panel-heading">
-                            <h3 class="panel-title-purchase panelheadingpad">BAR GRAPH
+                            <h3 class="panel-title-purchase panelheadingpad">Yearly Purchase
                             <button type="button" id="generate_purchase_pdf"  style="float:right"
 							class="btn btn-success btn-lg" data-placement="bottom" title="Download Pdf!">
-							<i class="fa fa-file-pdf-o"/> Download</button>
+							<i class="fa fa-file-pdf-o"/></button>
                             </h3>
                         </div>
                         <div class="panel-body">
@@ -67,7 +67,37 @@
                         </div>
                 	</div>
                 	<div class="row-card">
-	                	<div class="card-purchase">
+                		<div class="card-purchase-full">
+	                		<div class="card-head">
+	                			<h4>Top Purchase Vendors</h4>
+	                		</div>
+	                		<div class="card-body" style="padding:0px !important">
+	                			<div class="row-inner">
+	                				<a href="javascript:;" class="dashboard-block top-purchase-vendor" style="color:white">
+		                				<table class="table table-bordered table-sm">
+		                					<thead style="font-weight:bold">
+		                						<tr>
+		                							<td>Vendor</td>
+		                							<!-- <td>Count</td> -->
+		                							<td>Value</td>
+		                						</tr>
+		                					</thead>
+		                					<tbody>
+		                						<t t-foreach="widget.data.partner_data" t-as='partner'>
+		                							<tr>
+		                								<td><t t-esc='partner["partner_ids"]'></t></td>
+		                								<!-- <td><t t-esc='partner["count"]'></t></td> -->
+		                								<td><t t-esc='partner["sum"]'></t></td>
+		                							</tr>
+		                						</t>
+		                					</tbody>
+		                				</table>
+		                			</a>
+	                			</div>
+	                		</div>
+		                </div>
+                	
+	                	<!-- <div class="card-purchase">
 	                		<a href="javascript:;" class="dashboard-block bill_today">
 		                		<div class="card-head">
 		                			<h4>Today Bills</h4>
@@ -120,23 +150,105 @@
 		                			</div>
 		                		</div>
 	                		</a>
-	                	</div>
+	                	</div> -->
                 	</div>
                 </div>
            		<div class="column-chart">
                 	<div class="bg-chart-purchase chart-pie" style="background-color:white">
                 		<div class="panel-heading">
-                            <h3 class="panel-title-purchase panelheadingpad">PIE CHART
+                            <h3 class="panel-title-purchase panelheadingpad">Top Purchased Products
                         	<button type="button" style="float:right" 
                             id="generate_purchase_pie_pdf" class="btn btn-success btn-lg" ata-placement="bottom" title="Download Pdf!">
-                            <i class="fa fa-file-pdf-o"/> Download</button>
+                            <i class="fa fa-file-pdf-o"/></button>
                            </h3>
                         </div>
                         <div class="panel-body">
                             <canvas id="piechart_3d" />
                         </div>
                 	</div>
-                	<div class="row-card">
+                	
+                	<div class="row-card-new">
+		                <a href="javascript:;" class="dashboard-block general_purchase">
+		                	<div class="card-purchase-new" style="float:left">
+		                		<div class="card-head">
+		                			<h4>General Purchase</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner" style="color:white">
+		                					<div><span>Purchase Count:</span></div>
+		                					<div><span>Purchase Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val" style="color:white">
+		                					<div><span><t t-esc="widget.data.general_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.general_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+		                <a href="javascript:;" class="dashboard-block bill_6_month">
+		                	<div class="card-purchase-new">
+		                		<div class="card-head">
+		                			<h4>Due</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner" style="color:white">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val" style="color:white">
+		                					<div><span><t t-esc="widget.data.bill_due_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_due_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+		            </div>
+                	<div class="row-card-new">
+		                <a href="javascript:;" class="dashboard-block production_purchase">
+		                	<div class="card-purchase-new" style="float:left">
+		                		<div class="card-head">
+		                			<h4>Production Purchase</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner" style="color:white">
+		                					<div><span>purchase Count:</span></div>
+		                					<div><span>Purchase Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val" style="color:white">
+		                					<div><span><t t-esc="widget.data.production_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.production_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+	                	<a href="javascript:;" class="dashboard-block bill_pending">
+		                	<div class="card-purchase-new">
+		                		<div class="card-head">
+		                			<h4>Over Due</h4>
+		                		</div>
+		                		<div class="card-body">
+		                			<div class="row-inner">
+		                				<div class="col-inner" style="color:white">
+		                					<div><span>Due Count:</span></div>
+		                					<div><span>Due Total:</span></div>
+		                				</div>
+		                				<div class="col-inner-val" style="color:white">
+		                					<div><span><t t-esc="widget.data.bill_overdue_180_count"/></span></div>
+		                					<div><span><t t-esc="widget.data.bill_overdue_180_total"/></span></div>
+		                				</div>
+		                			</div>
+		                		</div>
+		                	</div>
+		                </a>
+		            </div>
+                	
+                	<!-- <div class="row-card">
                 		<a href="javascript:;" class="dashboard-block bill_3_month">
 		                	<div class="card-purchase">
 		                		<div class="card-head">
@@ -191,7 +303,7 @@
 		                		</div>
 		                	</div>
 		                </a>
-                	</div>
+                	</div> -->
                 </div>
            	
            	
@@ -200,44 +312,5 @@
            	
         </div>
      </div>
-        
-        
-        
-        
-<!--     Charts
-        label for charts
-        <div class="all_dash col-lg-12 margintp">
-			<div class="row">
-			 	<div class="col-lg-6">
-				 	<div class="panel">
-		                 <div class="panel-heading">
-		                     <h1 class="panel-title panelheadingpad">BAR GRAPH
-		                     	<button type="button" id="generate_sale_pdf" 
-											class="btn btn-success btn-lg" data-placement="bottom" title="Download Pdf!">
-											<i class="fa fa-file-pdf-o"/> Download</button>
-		                     </h1>
-		                 </div>
-		                	<div class="panel-body">
-		                        <canvas id="myChart" style="width:800px;height:400px;"/>
-		                    </div>
-		           	</div>
-			    </div>
-		       <div class="col-lg-6">
-				   <div class="panel">
-		               <div class="panel-heading">
-		                   <h1 class="panel-title panelheadingpad">PIE CHART
-		                   	<button type="button" id="generate_purchase_pie_pdf" class="btn btn-success btn-lg"
-		                       data-placement="bottom" title="Download Pdf!">
-		                       <i class="fa fa-file-pdf-o"/> Download
-		                   </button>
-		                   </h1>
-		               </div>
-		               <div class="panel-body">
-		                   <canvas id="piechart_3d"/>
-		               </div>
-		           </div>
-			   </div>
-           </div>
-		</div>    -->
     </t>
 </templates>
