@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//inspection_mrp/__manifest__.py=utf-8
+encoding//mapol_check_mrp_product_quantity_12/__init__.py=utf-8
+encoding//mapol_check_mrp_product_quantity_12/__manifest__.py=utf-8
+encoding//mapol_check_mrp_product_quantity_12/models/__init__.py=utf-8
+encoding//mapol_check_mrp_product_quantity_12/models/bom_quantity_check.py=utf-8
+encoding//mapol_checklist_quality/__manifest__.py=utf-8
+encoding//mapol_gate_entry/__manifest__.py=utf-8
+encoding//mapol_mrp_plan_order/__manifest__.py=utf-8
+encoding//mapol_purchase_dashboard/mapol_purchase_dashboard/__manifest__.py=utf-8
+encoding//mapol_sale_purchase_dashboard/__manifest__.py=utf-8
+encoding//mrp_plan/__manifest__.py=utf-8
