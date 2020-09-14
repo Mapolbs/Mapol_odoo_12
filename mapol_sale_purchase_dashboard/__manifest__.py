@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name": "Dashboard for Sale Purchase",
+    "name": "Dashboard for Sale and Purchase",
     'version': '12.0.2.0.0',
     "author" : "Mapol Business Solutions Pvt Ltd",
     "website": "http://mapolbs-opensource.com",
