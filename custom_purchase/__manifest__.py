@@ -11,7 +11,9 @@
     "description": """
         Slipt Purchase into General Purchase and Production Purchase.
     """,
-    "license": "LGPL-3",
+    'currency': 'EUR',
+    'price': 0.0,
+    "license": "OPL-1",
     "installable": True,
     'application': True,
     'auto_install': False,

@@ -18,7 +18,7 @@
     ],
     'currency': 'EUR',
     'price': 34.0,
-    "license": "LGPL-3",
+    "license": "OPL-1",
     "data": [
         'security/ir.model.access.csv',
         "views/dashboard.xml",
