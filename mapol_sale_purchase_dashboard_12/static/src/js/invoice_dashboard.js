@@ -19,11 +19,11 @@ var QWeb = core.qweb;
 
 
 var DashboardView = AbstractAction.extend(ControlPanelMixin, {
-	template: "mapol_sale_purchase_dashboard.HomePage",
+	template: "mapol_sale_purchase_dashboard_12.HomePage",
     searchview_hidden: true,
     init: function(parent, context) {
         this._super(parent, context);
-        this.dashboards_templates = ['mapol_sale_purchase_dashboard.invoice'];
+        this.dashboards_templates = ['mapol_sale_purchase_dashboard_12.invoice'];
     },
     
     start: function() {
